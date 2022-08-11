@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model BulkyBook.Models.Customer
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+	<input asp-for="Id" hidden />
+	<div class="row">
+			<div class="border p-3 mt-4 row">
+		<div class="col-12 pb-2">
+			@if(Model.Id != 0)
+			{
+					<h3 class="text-dark">Update & Save Customer</h3>
+
+				}else
+				{
+					<h3 class="text-dark">Create Customer</h3>
+				}
+				
+			<hr />
+		</div>
+		
+		<div class="mb-3">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" class="form-control" type="text" required style="background:#e6e6e6;"/>
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Address"></label>
+			<input asp-for="Address" class="form-control" type="text" required style="background:#e6e6e6;"/>
+			<span asp-validation-for="Address" class="text-danger"></span>
+		</div>
+			<div class="mb-3">
+			<label asp-for="Phone"></label>
+			<input asp-for="Phone" class="form-control" type="text" required style="background:#e6e6e6;"/>
+			<span asp-validation-for="Phone" class="text-danger"></span>
+		</div>
+			<div class="mb-3">
+			<label asp-for="Email"></label>
+			<input asp-for="Email" class="form-control" type="email" required style="background:#e6e6e6;"/>
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+	
+		<div class="col-12">
+			@if (Model.Id != 0)
+			{
+				<button type="submit" class="btn btn-success" style="width:190px"><i class="bi bi-save"></i> &nbsp;Save</button>
+			}
+			else
+			{
+				<button type="submit"  class="btn btn-success" style="width:190px"><i class="bi bi-plus-circle"></i> &nbsp;Create</button>
+			}
+			<a asp-controller="Customer" asp-action="Index" class="btn btn-warning" style="width:190px"><i class="bi bi-arrow-left-circle"></i> &nbsp;
+				Back to List
+			</a>
+		</div>
+	</div>
+	</div>
+</form>
+
+@section Scripts{
+	@{
+	<partial name="_ValidationScriptsPartial" />
+	}
+}

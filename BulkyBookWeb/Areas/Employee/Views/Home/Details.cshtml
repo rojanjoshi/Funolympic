@@ -1,0 +1,99 @@
+﻿@model Comment
+@using Microsoft.AspNetCore.Identity
+
+@{
+Layout = "_Layout1";
+}
+
+@inject UserManager<IdentityUser> UserManager
+ <section id="menu" class="mt-5">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row" data-aos="fade-up" data-aos-delay="200" style="">
+
+<iframe width="1104" height="621" src="@Model.Video.Videolink"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                <div class="col-12 ">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="row mt-3">
+                            <input hidden asp-for="VideoId" />
+                            <h3 style="text-transform:uppercase;" >@Model.Video.Name</h3>
+                            <h4 style="text-transform:uppercase;color:#cda45e !important">@Model.Video.Category.Name</h4>
+                            @*<a href="@Model.Video.Videolink" class="glightbox play-btn" style="text-transform:uppercase;">@Model.Video.Name</a>*@
+                            @*<a href="@item.Videolink" class="btntransparent animated fadeInUp scrollto glightbox play-btn btn-sm">Watch Live</a>*@
+                            
+
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="">
+                            @*<h6 style="text-transform:uppercase;" >@item.Name</h6>*@
+                            <a asp-area="Identity" asp-page="/Account/Login" class="" style="text-transform:uppercase;">@Model.Video.Name</a>
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btntransparent animated fadeInUp scrollto " style="padding:10px;font-size:13px;font-weight:600;">Watch Live</a>
+                        </div>
+                    }
+
+                  
+                    
+                    <form method="post" class="row">
+                        <input hidden asp-for="Id" />
+                        <input hidden asp-for="VideoId" />
+                         <input hidden asp-for="ApplicationUserId" />
+                            <div class="col-6 mt-3" style="display:flex;flex-direction:row;">
+                                <input asp-for="CommentName" class="p-2" type="text" placeholder="Write Comment" style="width:1000px!important;border-radius:0px;"/>
+                                 <button type="submit" value="Add to Cart" class="btntransparent btn " style="width:200px;border-radius:0px!important;margin-left:3px;"><i class="bi bi-send"></i></button>
+                            </div>
+                         
+                             <p class="mt-3">All Comments</p>
+                    @foreach(var item in Model.Commentlist)
+                    {
+                        
+                        <form method="post" class="row">
+                           
+                             <div class="col-7" style="">
+                                
+                                 <hr />
+                                 <div style="display:flex;flex-direction:row;">
+                                           <p style="color:#cda45e !important">@item.ApplicationUser.Name</p><p>   &nbsp;&nbsp;</p><p></p>
+                                
+                                            <p style="color:white;">@item.CommentName</p>
+                                 </div>
+                                   <div style="">
+                                       
+                                    @if (UserManager.GetUserName(User) == item.ApplicationUser.Email)
+                                    {
+                                         <a asp-action="Edit" asp-route-commentId="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a>
+                                        <a asp-action="Delete" asp-route-commentId="@item.Id" style="margin-left:5px;color:red;"><i class="bi bi-trash-fill"></i>Delete</a>
+                                    }
+                                   
+                                 </div>
+                          
+                            </div>
+                           
+                        </form>
+                    }
+               
+   
+                    </form>
+
+                   
+                </div>
+
+          
+ 
+           </div>
+
+         
+       </div>
+   </section>
+
+
+   
+
+
+
+       

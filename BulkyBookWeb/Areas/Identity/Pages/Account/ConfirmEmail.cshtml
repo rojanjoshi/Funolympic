@@ -1,0 +1,14 @@
+﻿@page
+@model ConfirmEmailModel
+@{
+    ViewData["Title"] = "Confirm email";
+}
+
+@{
+    Layout = "_LayoutLogin1";
+}
+<div class="container" style="margin-top:150px;">
+<h1>@ViewData["Title"]</h1>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<p>Your email have been confirmed. Please login</p>
+</div>

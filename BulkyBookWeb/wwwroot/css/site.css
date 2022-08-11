@@ -1,0 +1,40 @@
+﻿
+
+.btnone :hover {
+    background: #cda45e;
+}
+
+.btntwo {
+    border-radius: 50px;
+    background: black;
+    border: 2px solid #cda45e;
+}
+
+
+.btntransparent {
+    background: transparent;
+    color: white !important;
+    border: 2px solid #cda45e !important;
+    border-radius:50px!important;
+}
+
+    .btntransparent:hover {
+        background: #cda45e !important;
+    }
+
+
+.btnnormal {
+    background: #cda45e !important;
+    color: white !important;
+    border-radius: 50px !important;
+}
+
+
+.aunderline {
+    color: #cda45e !important;
+}
+
+.aunderline:hover {
+    text-decoration: underline !important;
+    
+}

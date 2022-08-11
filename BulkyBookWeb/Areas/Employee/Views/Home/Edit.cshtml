@@ -1,0 +1,58 @@
+﻿@model Comment
+@using Microsoft.AspNetCore.Identity
+
+@{
+Layout = "_Layout1";
+}
+@inject UserManager<IdentityUser> UserManager
+<section id="menu" class="menu section-bg" style="margin-top:100px;">
+    <div class="container" data-aos="fade-up">
+
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-12 menu-item">
+
+                <div class="" style="">
+                            
+                            <h2 style="text-transform:uppercase;" >@Model.Video.Name</h2>
+                           @* <a href="@Model.Video.Videolink" class="glightbox play-btn" style="text-transform:uppercase;">@Model.Video.Name</a>*@
+                            @*<a href="@item.Videolink" class="btntransparent animated fadeInUp scrollto glightbox play-btn btn-sm">Watch Live</a>*@
+                            
+
+
+                        </div>
+                
+                   
+                <form method="post" asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="VideoId" />
+                    <input type="hidden" asp-for="ApplicationUserId" />
+                    
+                    <div class=" col-4 mt-2" style="">
+                        <h3 style="color:#cda45e !important">Edit Your Comment</h3>
+                        <input asp-for="CommentName" class="form-control" type="text" placeholder="Write Comment" />
+                        <button type="submit" value="Add to Cart" class="btntransparent btn form-control mt-3" style="width:100px;border-radius:0px!important">Save</button>
+                    </div>
+                    
+
+
+
+
+                </form>
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+   
+</section>
+
+
+
+
+
+
+

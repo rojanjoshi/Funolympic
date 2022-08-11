@@ -1,0 +1,29 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+@{
+    Layout = "_LayoutLogin1";
+}
+<div class="container" style="margin-top:150px;">
+<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+<p>
+Please check your email<br>
+    If your email is correct, a email confirmation link would be sent to your email<br>
+    Confirm your email to create account<br>
+    
+</p>
+    }
+    else
+    {
+<p>
+        Please check your email to confirm your account.
+</p>
+    }
+}
+</div>
+@*<a id="confirm-link" href="@Model.EmailConfirmationUrl" class="aunderline">Click here to confirm your account</a>*@

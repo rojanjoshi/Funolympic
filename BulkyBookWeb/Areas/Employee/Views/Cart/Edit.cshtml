@@ -1,0 +1,397 @@
+﻿@using BulkyBook.Utility
+@using Microsoft.AspNetCore.Http
+@model BulkyBook.Models.ViewModels.OrderVM
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+
+
+<div class="row" >
+
+     <div class="row  align-items-center ">
+        <div class="col-2">
+            <label class="col-form-label"><h5><strong>Bill Num </strong></h5></label>
+        </div>
+        <div class="col-2">
+            <input  asp-for="OrderDetail.OrderId" class="form-control" type="number" readonly/>
+        </div>
+         <div class="col-4 text-end ">
+                
+            </div>
+            <div class="col-2 text-end " id="printhide">
+                 <a class="btn btn-success"  style="width:210px;" id="print"><i class="bi bi-printer"></i> &nbsp;Print</a>
+               
+            </div>
+            <div class="col-2 text-end" id="btnhide">
+                 <a  class="btn btn-info" asp-area="Employee" asp-controller="Cart" asp-action="Create" style="width:220px;"><i class="bi bi-plus-circle"></i> &nbsp;Create New Bill</a>
+            </div>
+     </div>
+
+
+
+ 
+
+    <hr class="mt-3"/>
+
+    <div class="row autonum">
+        <div class="card-header bg-light ml-0">
+            <div class="row" style="background:#e6e6e6;">
+                   <div class="col-1   text-center border">
+                    <i class="fa fa-shopping-cart"></i> &nbsp;
+                    <h5 class=""><strong>SN </strong></h5>
+                </div>
+                <div class="col-4   text-center border">
+                    <i class="fa fa-shopping-cart"></i> &nbsp;
+                    <h5 class=""><strong>Particular </strong></h5>
+                </div>
+                <div class="col-3 text-end border">
+                    <i class="fa fa-shopping-cart"></i> &nbsp;
+                    <h5 class=""><strong>Price </strong></h5>
+                </div>
+                <div class="col-1 text-end border">
+                    <i class="fa fa-shopping-cart"></i> &nbsp;
+                    <h5 class=""><strong>Qty </strong></h5>
+                </div>
+                <div class="col-3 text-end border">
+                    <i class="fa fa-shopping-cart"></i> &nbsp;
+                    <h5 class=""><strong>Amount </strong></h5>
+                </div>
+           
+            </div>
+            @if (Model.OrderDetailList.Count() == 0)
+        {
+            <p>No Products Added</p>
+        }
+        else
+        {
+            @foreach (var item in Model.OrderDetailList)
+            {
+                <div class="row">
+                        <div class="col-1  pt-2 text-center border">
+                        <i class="fa fa-shopping-cart"></i> &nbsp;
+                        <h5 class="autonumel"><strong></strong></h5>
+                    </div>
+                    <div class="col-4  pt-2 text-center border">
+                        <i class="fa fa-shopping-cart"></i> &nbsp;
+                        <h5><strong>@item.Product.Name</strong></h5>
+                    </div>
+                    <div class="col-3 text-end border">
+                        <i class="fa fa-shopping-cart "></i> &nbsp;
+                        <h5><strong>@item.Price</strong></h5>
+                </div>
+                <div class="col-1 text-end border">
+                    <i class="fa fa-shopping-cart"></i> &nbsp;
+                    <h5><strong>@item.Quantity</strong></h5>
+                    </div>
+                    <div class="col-3 text-end border">
+                        <i class="fa fa-shopping-cart"></i> &nbsp;
+                        <h5><strong>@((item.Price * item.Quantity))</strong></h5>
+                    </div>
+
+                 
+
+                </div>
+            }
+        }
+        
+
+        </div>
+
+
+
+
+    </div>
+
+
+        <form class="row g-3 mt-3" method="post" asp-action="Edit">
+
+            <input hidden asp-for="@Model.OrderHeader.ApplicationUserId" />
+
+    <div class="row g-3 align-items-center mt-3">
+        <div class="col-2">
+            <label class="col-form-label"><h5><strong> Mode </strong></h5></label>
+        </div>
+        <div class="col-3">
+
+
+             
+            <select asp-for="OrderHeader.TransactionId" asp-items="@Model.TransactionList" class="form-select" style="background:#e6e6e6;" >
+                <option disabled selected>--Select Transaction--</option>
+            </select>
+
+            <span asp-validation-for="OrderHeader.TransactionId" class="text-danger"></span>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2 ">
+            <label class="col-form-label"><h5><strong>Total </strong></h5></label>
+        </div>
+        <div class="col-3 ">
+            <input  class="form-control text-end" type="number"  asp-for="OrderHeader.Total" style="background:#e6e6e6;" readonly/>
+            <span asp-validation-for="OrderHeader.Total" class="text-danger"></span>
+        </div>
+
+    </div>
+
+    <div class="row g-3 align-items-center mt-1">
+        <div class="col-2">
+            <label class="col-form-label"><h5><strong>Cashier </strong></h5></label>
+        </div>
+        <div class="col-3">
+            <input class="form-control" type="text"  asp-for="OrderHeader.Cashier" readonly style="background:#e6e6e6;"/>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-1 ">
+            <label class="col-form-label"><h5><strong>Dis </strong></h5></label>
+        </div>
+        <div class="col-1">
+            <input id="txtdiscount" class="form-control" type="number"asp-for="OrderHeader.Dpercent" style="background:#e6e6e6;" readonly/>
+            <span asp-validation-for="OrderHeader.Dpercent" class="text-danger"></span>
+        </div>
+        <div class="col-3 ">
+            <input  class="form-control text-end" type="number" asp-for="OrderHeader.Discount" style="background:#e6e6e6;" readonly/>
+        </div>
+
+    </div>
+
+    <div class="row g-3 align-items-center mt-1">
+        <div class="col-2">
+            <label class="col-form-label"><h5><strong>Customer </strong></h5></label>
+        </div>
+        <div class="col-3">
+      
+          <select asp-for="OrderHeader.CustomerId" asp-items="@Model.CustomerList" class="form-select" style="background:#e6e6e6;" readonly>
+                <option disabled selected>--Select Customer--</option>
+            </select>
+
+            <span asp-validation-for="OrderHeader.CustomerId" class="text-danger"></span>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2 ">
+            <label class="col-form-label"><h5><strong>Net Amt </strong></h5></label>
+        </div>
+        <div class="col-3 ">
+            <input  class="form-control text-end" type="number"  asp-for="OrderHeader.Netamount" readonly style="background:#e6e6e6;"/>
+        </div>
+
+    </div>
+
+
+    <div class="row g-3 align-items-center mt-1">
+        <div class="col-2">
+            <label class="col-form-label"><h5><strong>Date </strong></h5></label>
+        </div>
+        <div class="col-3">
+            <input class="form-control" type="datetime"  asp-for="OrderHeader.CreatedDate" readonly style="background:#e6e6e6;"/>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-2 ">
+            <label class="col-form-label" id="lbltendor"><h5><strong>Tendor </strong></h5></label>
+        </div>
+        <div class="col-3 ">
+            <input  id="txttendor" class="form-control text-end" type="number"  asp-for="OrderHeader.Tendor" style="background:#e6e6e6;" readonly/>
+            <span asp-validation-for="OrderHeader.Tendor" class="text-danger"></span>
+        </div>
+
+    </div>
+
+
+    <div class="row g-3 align-items-center mt-1">
+        <div class="col-2">
+            
+        </div>
+           <div class="col-1">
+           <label class="col-form-label"><h5><strong></strong></h5></label>
+             </div>
+         <div class="col-2 text-end">
+            <label class="col-form-label"><h5><strong></strong></h5></label>
+             </div>
+              <div class="col-1">
+          
+          
+              
+           
+                      <input class="form-control" type = "number"  asp-for="OrderHeader.Id" hidden/>
+            <span asp-validation-for="OrderHeader.Id" class="text-danger"></span>
+            
+
+           
+        </div>
+          <div class="col-1">
+           <label class="col-form-label"><h5><strong></strong></h5></label>
+             </div>
+
+      
+       
+        <div class="col-2 ">
+            <label class="col-form-label" id="lblchange"><h5><strong>Change </strong></h5></label>
+        </div>
+        <div class= "col-3 ">
+        <input id="txtchange" class="form-control text-end" type="number" asp-for="OrderHeader.Change" readonly style="background:#e6e6e6;" />
+            <span id="spanchange" asp-validation-for="OrderHeader.Change" class="text-danger"></span>
+        </div>
+
+    </div>
+
+
+</form>
+
+</div>
+
+@section Scripts{
+	@{
+    <partial name="_ValidationScriptsPartial" />
+	}
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        
+
+        $("#OrderDetail_ProductId").change(function(){
+            var productid = $("#OrderDetail_ProductId").val();
+            getproductprice(productid);
+            
+
+        });
+
+
+         $('#OrderHeader_TransactionId').change(function(){
+                var selection= $('#OrderHeader_TransactionId Option:Selected').text();
+                if(selection!='Credit')
+                {
+
+                      $('#txttendor').show();
+                    
+                 $('#txtchange').show();
+                     
+                           $('#lbltendor').show();
+                    
+                 $('#lblchange').show();
+
+                 $('#spantendor').show();
+                 $('#spanchange').show();
+                   
+                    
+                }
+                else{
+                 $('#txttendor').hide();
+                    
+                 $('#txtchange').hide();
+                      $('#lbltendor').hide();
+                    
+                 $('#lblchange').hide();
+
+                  $('#spantendor').hide();
+                 $('#spanchange').hide();
+                    
+                }
+            })
+
+
+        $("input[type=number]").change(function(){
+            
+            calculatediscount();
+            calculatenetamount();
+            
+            getorderid();
+
+        });
+
+
+         calculatediscount();
+            calculatenetamount();
+           
+            getorderid();
+
+
+             $("#OrderDetail_Quantity").click(function(){
+            calculatediscount();
+        });
+       
+               $("#OrderDetail_Price").click(function(){
+            calculatediscount();
+        });
+       
+                   $("#txtchange").click(function(){
+            calculatechange();
+        });
+
+                     $("#print").click(function(){
+             $("#printhide").hide();
+       $("#btnhide").hide();
+      
+
+     window.print();
+        });
+
+
+
+
+
+
+
+
+    });
+
+
+
+    function getproductprice(productid){
+        $.ajax({
+            async:true,
+            type:'Get',
+            dataType:'JSON',
+            contentType:'application/json; charset=utf-8',
+            data:{productid:productid},
+            url:'/admin/order/getproductprice',
+            success:function(data){
+                $("#OrderDetail_Price").val((data));
+            },
+            error:function(){
+                alert("There is some problem to get the unit price");
+            }
+        });
+    }
+
+        function calculatechange(){
+           var tendor = $("#OrderHeader_Tendor").val();
+        var netamount = $("#OrderHeader_Netamount").val();
+        var change = (tendor - netamount);
+        $("#OrderHeader_Change").val((change));
+    }
+
+    function  calculatenetamount(){
+        var total = $("#OrderHeader_Total").val();
+        var discount = $("#OrderHeader_Discount").val();
+        var netamount = (total - discount);
+        $("#OrderHeader_Netamount").val((netamount));
+    }
+
+
+    function calculatediscount(){
+        var amount = $("#OrderHeader_Total").val();
+        var discount = $("#txtdiscount").val();
+        var discountamount = ((discount/100)*amount);
+        
+        $("#OrderHeader_Discount").val(parseFloat(discountamount).toFixed(4));
+    }
+
+        function getorderid(){
+        var orderid = $("#OrderHeader_Id").val();
+        
+        $("#OrderDetail_OrderId").val((orderid));
+    }
+
+    
+
+
+
+
+
+</script>

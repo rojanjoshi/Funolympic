@@ -38,8 +38,20 @@ public class HomeController : Controller
 
             Videolist = _unitOfWork.Video.GetAll(includeProperties: "Category"),
             Categorylist = _unitOfWork.Category.GetAll(),
+            Message = new(),
         };
+        var claimsIdentity = (ClaimsIdentity)User.Identity;
+        var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
+        if (claim == null)
+        {
+            return View(homeVM);
+        }
+        else
+        {
+            homeVM.Message.ApplicationUserId = claim.Value;
+        }
+        
 
         return View(homeVM);
     }
@@ -119,13 +131,6 @@ public class HomeController : Controller
 
         if (ModelState.IsValid)
         {
-
-
-
-
-
-
-
             _unitOfWork.Comment.Update(commentObj);
 
             _unitOfWork.Save();
@@ -183,5 +188,32 @@ public class HomeController : Controller
         TempData["success"] = "Comment deleted successfully";
         return RedirectToAction("Details", new { @videoId = obj.VideoId });
 
+    }
+
+    //POST
+    [HttpPost]
+    [ActionName("Message")]
+    [ValidateAntiForgeryToken]
+    public IActionResult Message(HomeVM obj)
+    {
+        var claimsIdentity = (ClaimsIdentity)User.Identity;
+        var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+        obj.Message.ApplicationUserId = claim.Value;
+
+
+        if (ModelState.IsValid)
+        {
+            _unitOfWork.Message.Add(obj.Message);
+            _unitOfWork.Save();
+            TempData["success"] = "Message sent successfully";
+            return RedirectToAction("Index");
+        }
+        else
+        {
+            TempData["error"] = "Message sending failed";
+        }
+
+
+        return RedirectToAction("Index");
     }
 }

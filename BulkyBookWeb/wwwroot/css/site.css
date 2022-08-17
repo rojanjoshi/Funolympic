@@ -12,7 +12,7 @@
 
 
 .btntransparent {
-    background: transparent;
+    background: transparent !important;
     color: white !important;
     border: 2px solid #cda45e !important;
     border-radius:50px!important;

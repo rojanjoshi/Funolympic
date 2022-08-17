@@ -23,5 +23,6 @@ public class ApplicationDbContext :IdentityDbContext
     public DbSet<OrderHeader> OrderHeaders { get; set; }
     public DbSet<OrderDetail> OrderDetails { get; set; }
     public DbSet<Video> videos { get; set; }
+    public DbSet<Message> Messages { get; set; }
 
 }

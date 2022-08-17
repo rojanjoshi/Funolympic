@@ -13,5 +13,6 @@ namespace BulkyBook.Models.ViewModels
        
         public IEnumerable<Video> ?Videolist{ get; set; }
         public IEnumerable<Category> ? Categorylist { get; set; }
+        public Message ?Message { get; set; }
     }
 }

@@ -13,254 +13,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<title>@ViewData["Title"] - Olympic</title>
+    <title>@ViewData["Title"] - Olympic</title>
 
-	<meta content="" name="description">
-	<meta content="" name="keywords">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
 
-	@*<link rel="stylesheet" href="~/css/bootswatchTheme.css" />*@
-	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/css/bootswatchTheme.css" />*@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/toaster.css" asp-append-version="true" />
-	@*<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />*@
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-	@*<link rel="stylesheet" href="//cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css" />*@
+    @*<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />*@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    @*<link rel="stylesheet" href="//cdn.datatables.net/1.11.2/css/jquery.dataTables.min.css" />*@
     <link rel="stylesheet" href="~/css/datatable.css" />
 
 
-	@*resturant*@
-	  <!-- Favicons -->
-  <link href="~/img/logo.jpg" rel="icon">
-  @*<link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">*@
+    @*resturant*@
+    <!-- Favicons -->
+    <link href="~/img/logo.jpg" rel="icon">
+    @*<link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">*@
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="~/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="~/vendor/aos/aos.css" rel="stylesheet">
-  <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="~/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="~/css/style.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="~/css/style.css" rel="stylesheet">
 </head>
-<body >
-  
-        
-    
+<body>
 
 
 
-   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-cente">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
-           <!-- Uncomment below if you prefer to use an image logo -->
-      <a asp-area="Employee" asp-controller="Home" asp-action="Index" class="logo me-auto me-lg-0" style="color:white;"><img src="~/img/logo.jpg" alt="" class="img-fluid" style="">&nbsp; Olympic</a>
-      @*<h1 class="logo me-auto me-lg-0"><a asp-area="Employee" asp-controller="Home" asp-action="Index">Raja Rani</a></h1>*@
-   
 
-      <nav id="navbar" class="navbar order-last order-lg-0" >
-        <ul>
-          <li><a class="nav-link scrollto active" asp-area="Employee" asp-controller="Home" asp-action="Index" >Home</a></li>
-          
-          <li><a class="nav-link scrollto" href="#menu">Watch Live</a></li>
-          
-          <li><a class="nav-link scrollto" href="#events">Events</a></li>
-          @if (User.IsInRole(SD.Role_Admin))
+
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-cente">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <a asp-area="Employee" asp-controller="Home" asp-action="Index" class="logo me-auto me-lg-0" style="color:white;"><img src="~/img/logo.jpg" alt="" class="img-fluid" style="">&nbsp; Olympic</a>
+            @*<h1 class="logo me-auto me-lg-0"><a asp-area="Employee" asp-controller="Home" asp-action="Index">Raja Rani</a></h1>*@
+
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto active" asp-area="Employee" asp-controller="Home" asp-action="Index">Home</a></li>
+
+                    <li><a class="nav-link scrollto text-danger" href="#menu">Live Now</a></li>
+
+                    @*<li><a class="nav-link scrollto" href="#events">Events</a></li>*@
+                    @if (User.IsInRole(SD.Role_Admin))
                     {
 
-                             <li class="dropdown"><a href="#"><span>Content Mgmt</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              
-              <li class="dropdown"><a href="#"><span>User</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a asp-area="Identity" asp-page="/Account/Index1">User Mgmt</a></li>
-                  <li><a asp-area="Admin" asp-controller="Userrole" asp-action="Index">User Role Mgmt</a></li>
-                
-                </ul>
-              </li>
-              <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category Mgmt</a></li>
-              <li><a asp-area="Admin" asp-controller="Video" asp-action="Index">Video Mgmt</a></li>
-              
-            </ul>
-          </li>
+                        <li class="dropdown">
+                            <a href="#"><span>Content Mgmt</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
 
-                        
+                             @*   <li class="dropdown">
+                                    <a href="#"><span>User</span> <i class="bi bi-chevron-right"></i></a>
+                                    <ul>
+                                        <li><a asp-area="Identity" asp-page="/Account/Index1">User Mgmt</a></li>
+                                        <li><a asp-area="Admin" asp-controller="Userrole" asp-action="Index">User Role Mgmt</a></li>
+
+                                    </ul>
+                                </li>*@
+                                <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category Mgmt</a></li>
+                                <li><a asp-area="Admin" asp-controller="Video" asp-action="Index">Video Mgmt</a></li>
+                                <li><a asp-area="Admin" asp-controller="Comment" asp-action="Index">Comment Mgmt</a></li>
+                                <li><a asp-area="Admin" asp-controller="Message" asp-action="Index">Message Mgmt</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#"><span>User Mgmt</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+
+                            @*    <li class="dropdown">
+                                    <a href="#"><span>User</span> <i class="bi bi-chevron-right"></i></a>
+                                    <ul>
+                                        <li><a asp-area="Identity" asp-page="/Account/Index1">User Mgmt</a></li>
+                                        <li><a asp-area="Admin" asp-controller="Userrole" asp-action="Index">User Role Mgmt</a></li>
+
+                                    </ul>
+                                </li>*@
+                                 <li><a asp-area="Identity" asp-page="/Account/Index1">User Mgmt</a></li>
+                                 <li><a asp-area="Admin" asp-controller="Userrole" asp-action="Index">User Role Mgmt</a></li>
+
+                            </ul>
+                        </li>
+
                     }
-                    <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-     
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-       
-         
- 
-          
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-    
+                    @*           <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>*@
 
-        <nav id="navbar" class="navbar order-last order-lg-0" >
-     
-       
-           
-                  <ul class="" >
-
-
-        @if (SignInManager.IsSignedIn(User))
-        {
-            <li class="">
-                <a  class="nav-link aunderline" id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="color:#cda45e;width:225px;"> @UserManager.GetUserName(User)!</a>
-            </li>
-            <li class="">
-                <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button id="logout" type="submit" class="nav-link btntransparent btn">Logout</button>
-                </form>
-            </li>
+                        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                </ul>
 
 
 
 
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
 
-        }
-        else
-        {
-            <li class="nav-link ">
-            <a asp-area="Identity" asp-page="/Account/Login" class="btntransparent" style="border:2px solid #cda45e;border-radius:50px;background:transparent;color:white;width:100px;letter-spacing:1px;" >Login</a>
-            </li>
-        }
-        
 
-    </ul>
-         <i class="bi bi-list mobile-nav-toggle"></i> 
-        
-      </nav><!-- .navbar -->
-    
-      
+            <nav id="navbar" class="navbar order-last order-lg-0">
+
+
+
+                <ul class="">
+
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="">
+                            <a class="nav-link aunderline" id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="color:#cda45e;width:225px;"> @UserManager.GetUserName(User)!</a>
+                        </li>
+                        <li class="">
+                            <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button id="logout" type="submit" class="nav-link btntransparent btn">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-link ">
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btntransparent" style="border:2px solid #cda45e;border-radius:50px;background:transparent;color:white;width:100px;letter-spacing:1px;">Login</a>
+                        </li>
+                    }
+
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+
+            </nav><!-- .navbar -->
 
 
 
 
 
+
+
+        </div>
+    </header><!-- End Header -->
+
+    <div class="">
+        <main role="main" class="pb-3">
+            <partial name="_Notification" />
+            @RenderBody()
+        </main>
     </div>
-  </header><!-- End Header -->
-  
-	<div class="" >
-		<main role="main" class="pb-3">
-			<partial name="_Notification" />
-			@RenderBody()
-		</main>
-	</div>
 
- 
+
     <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
+    <footer id="footer">
+        @*  <div class="footer-top">
+            <div class="container">
+            <div class="row">
 
-          <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>Restaurantly</h3>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
+            <h3>Restaurantly</h3>
+            <p>
+            A108 Adam Street <br>
+            NY 535022, USA<br><br>
+            <strong>Phone:</strong> +1 5589 55488 55<br>
+            <strong>Email:</strong> info@example.com<br>
+            </p>
+            <div class="social-links mt-3">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
-          </div>
+            </div>
+            </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
+            <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
-          </div>
+            </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
+            <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
             </ul>
-          </div>
+            </div>
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+            <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
 
-          </div>
+            </div>
 
+            </div>
+            </div>
+            </div>*@
+
+        <div class="container" style="letter-spacing:0.5px;">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Olympic</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/restaurantly-restaurant-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>, Edited by <a href="">Cherry</a>
+            </div>
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Restaurantly</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/restaurantly-restaurant-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+    </footer><!-- End Footer -->
 
 
-   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  
- @* <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	<script src="~/js/site.js" asp-append-version="true"></script>*@
+
+    @* <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<script src="//cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<script src="//cdn.datatables.net/plug-ins/1.12.1/api/sum().js"></script>
-	
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.12.1/api/sum().js"></script>
 
-      <!-- Vendor JS Files -->
-  <script src="~/vendor/aos/aos.js"></script>
-  <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="~/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="~/js/main.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="~/vendor/aos/aos.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/vendor/php-email-form/validate.js"></script>
 
-	@await RenderSectionAsync("Scripts", required: false)
+    <!-- Template Main JS File -->
+    <script src="~/js/main.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

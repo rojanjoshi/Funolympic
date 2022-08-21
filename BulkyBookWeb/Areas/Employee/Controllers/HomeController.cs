@@ -20,6 +20,7 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IUnitOfWork _unitOfWork;
+    
 
     
 
@@ -39,6 +40,8 @@ public class HomeController : Controller
             Videolist = _unitOfWork.Video.GetAll(includeProperties: "Category"),
             Categorylist = _unitOfWork.Category.GetAll(),
             Message = new(),
+            Gallerylist = _unitOfWork.Gallery.GetAll().Take(8),
+            IndexGallerylist = _unitOfWork.Gallery.GetAll(),
         };
         var claimsIdentity = (ClaimsIdentity)User.Identity;
         var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
@@ -53,6 +56,18 @@ public class HomeController : Controller
         }
         
 
+        return View(homeVM);
+    }
+
+
+    public IActionResult Indexgallery()
+    {
+        HomeVM homeVM = new()
+        {
+
+           
+            IndexGallerylist = _unitOfWork.Gallery.GetAll(),
+        };
         return View(homeVM);
     }
 

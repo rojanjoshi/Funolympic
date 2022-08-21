@@ -72,12 +72,14 @@
 
                     <li><a class="nav-link scrollto text-danger" href="#menu">Live Now</a></li>
 
+                    <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
+
                     @*<li><a class="nav-link scrollto" href="#events">Events</a></li>*@
                     @if (User.IsInRole(SD.Role_Admin))
                     {
 
                         <li class="dropdown">
-                            <a href="#"><span>Content Mgmt</span> <i class="bi bi-chevron-down"></i></a>
+                            <a href="#"><span>Content Mgmt 1</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
 
                              @*   <li class="dropdown">
@@ -89,12 +91,22 @@
                                     </ul>
                                 </li>*@
                                 <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category Mgmt</a></li>
-                                <li><a asp-area="Admin" asp-controller="Video" asp-action="Index">Video Mgmt</a></li>
+                                
                                 <li><a asp-area="Admin" asp-controller="Comment" asp-action="Index">Comment Mgmt</a></li>
                                 <li><a asp-area="Admin" asp-controller="Message" asp-action="Index">Message Mgmt</a></li>
 
                             </ul>
                         </li>
+
+                                 <li class="dropdown">
+                            <a href="#"><span>Content Mgmt 2</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>                 
+                                <li><a asp-area="Admin" asp-controller="Video" asp-action="Index">Video Mgmt</a></li>
+                                <li><a asp-area="Admin" asp-controller="Gallery" asp-action="Index">Gallery Mgmt</a></li>
+
+                            </ul>
+                        </li>
+
 
                         <li class="dropdown">
                             <a href="#"><span>User Mgmt</span> <i class="bi bi-chevron-down"></i></a>

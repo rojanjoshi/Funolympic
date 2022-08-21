@@ -21,6 +21,7 @@ namespace BulkyBook.DataAccess.Repository.IRepository
         IVideoRepository Video { get; }
         ICommentRepository Comment { get; }
         IMessageRepository Message { get; }
+        IGalleryRepository Gallery { get; }
 
         void Save();
     }

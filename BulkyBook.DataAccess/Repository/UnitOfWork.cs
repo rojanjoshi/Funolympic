@@ -27,6 +27,7 @@ namespace BulkyBook.DataAccess.Repository
             Video = new VideoRepository(_db);
             Comment = new CommentRepository(_db);
             Message = new MessageRepository(_db);
+            Gallery = new GalleryRepository(_db);
         }
 
 
@@ -42,6 +43,7 @@ namespace BulkyBook.DataAccess.Repository
 
         public ICategoryRepository Category { get; private set; }
         public IMessageRepository Message { get; private set; }
+        public IGalleryRepository Gallery { get; private set; }
 
 
         public void Save()

@@ -523,12 +523,12 @@
     <!-- End Testimonials Section -->
 
     <!-- ======= Gallery Section ======= -->
-   @* <section id="gallery" class="gallery">
+   <section id="gallery" class="gallery">
 
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h2>Gallery</h2>
-          <p>Some photos from Our Restaurant</p>
+          <p>Some photos from Olympic</p>
         </div>
       </div>
 
@@ -536,75 +536,30 @@
 
         <div class="row g-0">
 
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="~/img/gallery/pic1.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="~/img/gallery/pic1.jpg" alt="" class="img-fluid" style="height:280px;width:372px;" >
-              </a>
-            </div>
-          </div>
+          
 
-          <div class="col-lg-3 col-md-4">
+        @foreach(var item in Model.Gallerylist)
+                {
+                         <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="~/img/gallery/pic2.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="~/img/gallery/pic2.jpg" alt="" class="img-fluid" style="height:280px;width:372px;" >
+              <a href="@item.ImageUrl" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="@item.ImageUrl" alt="" class="img-fluid" style="width:400px;height:300px;">
               </a>
             </div>
           </div>
+                }
 
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="~/img/gallery/pic3.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="~/img/gallery/pic3.jpg" alt="" class="img-fluid" style="height:280px;width:372px;">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="~/img/gallery/pic4.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="~/img/gallery/pic4.jpg" alt="" class="img-fluid" style="height:280px;width:372px;">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="~/img/gallery/pic5.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="~/img/gallery/pic5.jpg" alt="" class="img-fluid" style="height:280px;width:372px;">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="~/img/gallery/pic6.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="~/img/gallery/pic6.jpg" alt="" class="img-fluid" style="height:280px;width:372px;">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="~/img/gallery/pic7.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="~/img/gallery/pic7.jpg" alt="" class="img-fluid" style="height:280px;width:372px;">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="~/img/gallery/pic8.jpg" class="gallery-lightbox" data-gall="gallery-item">
-                <img src="~/img/gallery/pic8.jpg" alt="" class="img-fluid" style="height:280px;width:372px;">
-              </a>
-            </div>
-          </div>
 
         </div>
-
+         <div class="row g-0 mt-3" style="justify-content:center;">
+             <a asp-area="Employee" asp-controller="Home" asp-action="Indexgallery" class="btn btntransparent" style="margin-left:0px;width:200px;" >See All</a>
+             </div>
       </div>
-    </section>*@
+    </section>
     <!-- End Gallery Section -->
+
+
+
 
     <!-- ======= Chefs Section ======= -->
    @* <section id="chefs" class="chefs">
@@ -678,7 +633,7 @@
     <!-- End Chefs Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">

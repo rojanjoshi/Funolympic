@@ -63,7 +63,7 @@
         <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
             <!-- Uncomment below if you prefer to use an image logo -->
             <a asp-area="Employee" asp-controller="Home" asp-action="Index" class="logo me-auto me-lg-0" style="color:white;"><img src="~/img/logo.jpg" alt="" class="img-fluid" style="">&nbsp; Olympic</a>
-            @*<h1 class="logo me-auto me-lg-0"><a asp-area="Employee" asp-controller="Home" asp-action="Index">Raja Rani</a></h1>*@
+         
 
 
             <nav id="navbar" class="navbar order-last order-lg-0">
@@ -73,63 +73,52 @@
                     <li><a class="nav-link scrollto text-danger" href="#menu">Live Now</a></li>
 
                     <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-
-                    @*<li><a class="nav-link scrollto" href="#events">Events</a></li>*@
-                    @if (User.IsInRole(SD.Role_Admin))
+                    <li><a class="nav-link scrollto" href="#events">Upcomming Games</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    
+                  @if (User.IsInRole(SD.Role_Admin))
                     {
 
                         <li class="dropdown">
-                            <a href="#"><span>Content Mgmt 1</span> <i class="bi bi-chevron-down"></i></a>
+                            <a href="#"><span>Content Mgmt</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
 
-                             @*   <li class="dropdown">
-                                    <a href="#"><span>User</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a asp-area="Identity" asp-page="/Account/Index1">User Mgmt</a></li>
-                                        <li><a asp-area="Admin" asp-controller="Userrole" asp-action="Index">User Role Mgmt</a></li>
-
-                                    </ul>
-                                </li>*@
+                           
+                                 <li><a asp-area="Identity" asp-page="/Account/Index1">User Mgmt</a></li>
+                                 <li><a asp-area="Admin" asp-controller="Userrole" asp-action="Index">User Role Mgmt</a></li>
+                           
                                 <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category Mgmt</a></li>
                                 
                                 <li><a asp-area="Admin" asp-controller="Comment" asp-action="Index">Comment Mgmt</a></li>
                                 <li><a asp-area="Admin" asp-controller="Message" asp-action="Index">Message Mgmt</a></li>
-
-                            </ul>
-                        </li>
-
-                                 <li class="dropdown">
-                            <a href="#"><span>Content Mgmt 2</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>                 
                                 <li><a asp-area="Admin" asp-controller="Video" asp-action="Index">Video Mgmt</a></li>
                                 <li><a asp-area="Admin" asp-controller="Gallery" asp-action="Index">Gallery Mgmt</a></li>
+                              
 
                             </ul>
-                        </li>
+                        </li>                                 
 
-
-                        <li class="dropdown">
-                            <a href="#"><span>User Mgmt</span> <i class="bi bi-chevron-down"></i></a>
+                     }else if(User.IsInRole(SD.Role_Employee)) 
+                     {
+                           <li class="dropdown">
+                            <a href="#"><span>Content Mgmt</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
 
-                            @*    <li class="dropdown">
-                                    <a href="#"><span>User</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a asp-area="Identity" asp-page="/Account/Index1">User Mgmt</a></li>
-                                        <li><a asp-area="Admin" asp-controller="Userrole" asp-action="Index">User Role Mgmt</a></li>
-
-                                    </ul>
-                                </li>*@
-                                 <li><a asp-area="Identity" asp-page="/Account/Index1">User Mgmt</a></li>
-                                 <li><a asp-area="Admin" asp-controller="Userrole" asp-action="Index">User Role Mgmt</a></li>
+                           
+                                
+                           
+                                <li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category Mgmt</a></li>
+                                
+                                <li><a asp-area="Admin" asp-controller="Comment" asp-action="Index">Comment Mgmt</a></li>
+                                <li><a asp-area="Admin" asp-controller="Message" asp-action="Index">Message Mgmt</a></li>
+                                <li><a asp-area="Admin" asp-controller="Video" asp-action="Index">Video Mgmt</a></li>
+                                <li><a asp-area="Admin" asp-controller="Gallery" asp-action="Index">Gallery Mgmt</a></li>
+                              
 
                             </ul>
-                        </li>
-
-                    }
-                    @*           <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>*@
-
-                        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                        </li>            
+                     }
+                        
                 </ul>
 
 

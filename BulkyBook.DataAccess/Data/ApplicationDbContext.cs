@@ -25,5 +25,5 @@ public class ApplicationDbContext :IdentityDbContext
     public DbSet<Video> videos { get; set; }
     public DbSet<Message> Messages { get; set; }
     public DbSet<Gallery> Galleries { get; set; }
-
+    public DbSet<Upcomming> Upcommings { get; set; }
 }

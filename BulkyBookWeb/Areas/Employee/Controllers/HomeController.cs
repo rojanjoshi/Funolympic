@@ -42,6 +42,7 @@ public class HomeController : Controller
             Message = new(),
             Gallerylist = _unitOfWork.Gallery.GetAll().Take(8),
             IndexGallerylist = _unitOfWork.Gallery.GetAll(),
+            Upcomminglist = _unitOfWork.Upcomming.GetAll(),
         };
         var claimsIdentity = (ClaimsIdentity)User.Identity;
         var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
@@ -59,7 +60,7 @@ public class HomeController : Controller
         return View(homeVM);
     }
 
-
+    [Authorize]
     public IActionResult Indexgallery()
     {
         HomeVM homeVM = new()
@@ -71,6 +72,7 @@ public class HomeController : Controller
         return View(homeVM);
     }
 
+    [Authorize]
     public IActionResult Details(int videoId)
     {
         Comment commentObj = new()
@@ -118,7 +120,7 @@ public class HomeController : Controller
         return RedirectToAction("Details", new { @videoId = comment.VideoId });
     }
 
-
+    [Authorize]
     public IActionResult Edit(int commentId)
     {
         if (commentId == null || commentId == 0)
@@ -140,6 +142,7 @@ public class HomeController : Controller
     //POST
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize]
     public IActionResult Edit(Comment commentObj)
     {
        
@@ -169,6 +172,7 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
+    [Authorize]
     public IActionResult Delete(int? commentId)
     {
         if (commentId == null || commentId == 0)
@@ -188,6 +192,7 @@ public class HomeController : Controller
     }
 
     //POST
+    [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Delete(Comment commentobj)
@@ -209,6 +214,7 @@ public class HomeController : Controller
     [HttpPost]
     [ActionName("Message")]
     [ValidateAntiForgeryToken]
+    [Authorize]
     public IActionResult Message(HomeVM obj)
     {
         var claimsIdentity = (ClaimsIdentity)User.Identity;

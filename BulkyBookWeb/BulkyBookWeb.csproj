@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\gallery\" />
+    <Folder Include="wwwroot\images\upcomming\" />
     <Folder Include="wwwroot\images\videos\" />
   </ItemGroup>
 

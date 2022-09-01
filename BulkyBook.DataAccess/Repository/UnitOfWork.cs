@@ -28,6 +28,7 @@ namespace BulkyBook.DataAccess.Repository
             Comment = new CommentRepository(_db);
             Message = new MessageRepository(_db);
             Gallery = new GalleryRepository(_db);
+            Upcomming = new UpcommingRepository(_db);
         }
 
 
@@ -44,6 +45,7 @@ namespace BulkyBook.DataAccess.Repository
         public ICategoryRepository Category { get; private set; }
         public IMessageRepository Message { get; private set; }
         public IGalleryRepository Gallery { get; private set; }
+        public IUpcommingRepository Upcomming { get; private set; }
 
 
         public void Save()

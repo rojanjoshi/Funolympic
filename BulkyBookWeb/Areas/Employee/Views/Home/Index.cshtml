@@ -278,112 +278,55 @@
     </section>*@
     <!-- End Specials Section -->
 
-    <!-- ======= Events Section ======= -->
-   @* <section id="events" class="events">
+   
+    <!-- ======= Event Section ======= -->
+    <section id="events" class="events">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Events</h2>
-          <p>Organize Your Events in our Restaurant</p>
+          <h2>New</h2>
+          <p>Upcomming Games</p>
         </div>
 
-        <div class="" data-aos="fade-up" data-aos-delay="100">
+       
+        <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
+                    @foreach (var item in Model.Upcomminglist)
+                    {
+                          <div class="swiper-slide">
               <div class="row event-item">
                 <div class="col-lg-6">
-                  <img src="~/img/event-birthday.jpg" class="img-fluid" alt="">
+                  <img src="@item.ImageUrl" class="" alt="" height="400px" width="600px">
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  
+                  <h3>@item.Category.Name</h3>
                   <div class="price">
-                    
+                    <p><span>@item.Name</span></p>
                   </div>
+                 <h3>@item.Date</h3>
+                
                
-                  <ul>
-                    <li><i class="bi bi-check-circled">1</i> Birthday Parties</li>
-                    <li><i class="bi bi-check-circled">2</i> Private Parties</li>
-                    <li><i class="bi bi-check-circled">3</i> Custom Parties</li>
-                  </ul>
-                  <p>
-                    Everyone will appreciate a nice quiet and comfortable place to eat and enjoy each other’s company.
-                    
-                    Invite friends and families of your to be a part of celebration. 
-                    Here we have excellent management for everything from small events to large events. 
-                    We have more than 20 people capacities with extraordinary interior decoration.
-                  </p>
-                  <p>
-                      It’s a great place to host a party which will be memorable for a long period of time and the budget as well is accurate for everyone. For hosting a party it is an awesome place with good service and a huge parking space.
-                  </p>
                 </div>
               </div>
-            </div>
-            <!-- End testimonial item -->
+            </div><!-- End testimonial item -->
+                    }
+                  
+            
+          
 
-           <div class="swiper-slide">
-              <div class="row event-item">
-                <div class="col-lg-6">
-                  <img src="~/img/event-private.jpg" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>Private Parties</h3>
-                  <div class="price">
-                    <p><span>$290</span></p>
-                  </div>
-                  <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
-                  </p>
-                  <ul>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  </ul>
-                  <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="row event-item">
-                <div class="col-lg-6">
-                  <img src="~/img/event-custom.jpg" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>Custom Parties</h3>
-                  <div class="price">
-                    <p><span>$99</span></p>
-                  </div>
-                  <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
-                  </p>
-                  <ul>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  </ul>
-                  <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- End testimonial item -->
+            
 
           </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
-    </section>*@
-    <!-- End Events Section -->
+    </section><!-- End Events Section -->
+
+
+
+
+
 
     <!-- ======= Book A Table Section ======= -->
     @*<section id="book-a-table" class="book-a-table">

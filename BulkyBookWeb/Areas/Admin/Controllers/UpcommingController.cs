@@ -15,12 +15,12 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin, Employee")]
-    public class CommentController : Controller
+    public class UpcommingController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public CommentController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+        public UpcommingController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
@@ -34,51 +34,51 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         //GET
         public IActionResult Upsert(int? id)
         {
-
-            ProductVM productVM = new()
+            UpcommingVM upcommingVM = new()
             {
-                Product = new(),
+                Upcomming = new(),
                 CategoryList = _unitOfWork.Category.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.Name,
                     Value = i.Id.ToString()
                 }),
-           
+         
             };
-
 
             if (id == null || id == 0)
             {
-                //create product
-                return View(productVM);
+                return View(upcommingVM);
             }
             else
             {
-                productVM.Product = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
-               
-                return View(productVM);
-                //update product
+                upcommingVM.Upcomming = _unitOfWork.Upcomming.GetFirstOrDefault(u => u.Id == id);
+                if (upcommingVM.Upcomming == null)
+                {
+                    return NotFound();
+                }
+                return View(upcommingVM);
             }
+
         }
 
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(ProductVM obj, IFormFile? file)
+        public IActionResult Upsert(UpcommingVM obj, IFormFile? file)
         {
+
             if (ModelState.IsValid)
             {
-
                 string wwwRootPath = _hostEnvironment.WebRootPath;
                 if (file != null)
                 {
                     string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(wwwRootPath, @"images\products");
+                    var uploads = Path.Combine(wwwRootPath, @"images\upcomming");
                     var extension = Path.GetExtension(file.FileName);
 
-                    if (obj.Product.ImageUrl != null)
+                    if (obj.Upcomming.ImageUrl != null)
                     {
-                        var oldImagePath = Path.Combine(wwwRootPath, obj.Product.ImageUrl.TrimStart('\\'));
+                        var oldImagePath = Path.Combine(wwwRootPath, obj.Upcomming.ImageUrl.TrimStart('\\'));
                         if (System.IO.File.Exists(oldImagePath))
                         {
                             System.IO.File.Delete(oldImagePath);
@@ -89,45 +89,42 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
                     {
                         file.CopyTo(fileStreams);
                     }
-                    obj.Product.ImageUrl = @"\images\products\" + fileName + extension;
-
+                    obj.Upcomming.ImageUrl = @"\images\upcomming\" + fileName + extension;
                 }
-
-
-                var productfromdb = _unitOfWork.Product.GetFirstOrDefault(u => u.Name == obj.Product.Name);
-                if (obj.Product.Id == 0)
+                var upcommingfromdb = _unitOfWork.Upcomming.GetFirstOrDefault(u => u.Name == obj.Upcomming.Name);
+                if (obj.Upcomming.Id == 0)
                 {
-                    if (productfromdb == null)
+                    if (upcommingfromdb == null)
                     {
-                        _unitOfWork.Product.Add(obj.Product);
+                        _unitOfWork.Upcomming.Add(obj.Upcomming);
 
-                        TempData["success"] = "Product created successfully";
+                        TempData["success"] = "Upcomming games created successfully";
 
                     }
                     else
                     {
                         //TempData["error"] = "Operation Failed! Duplicate Entry";
-                        ModelState.AddModelError("name", "Name already taken");
+                        ModelState.AddModelError("name", "Game already exist");
                         return View(obj);
                     }
 
                 }
                 else
                 {
-                    if (productfromdb == null)
+                    if (upcommingfromdb == null)
                     {
-                        _unitOfWork.Product.Update(obj.Product);
-                        TempData["success"] = "Product updated successfully";
+                        _unitOfWork.Upcomming.Update(obj.Upcomming);
+                        TempData["success"] = "Game updated successfully";
                     }
-                    else if (productfromdb.Id == obj.Product.Id)
+                    else if (upcommingfromdb.Id == obj.Upcomming.Id)
                     {
-                        _unitOfWork.Product.Update(obj.Product);
-                        TempData["success"] = "Product updated successfully";
+                        _unitOfWork.Upcomming.Update(obj.Upcomming);
+                        TempData["success"] = "Game updated successfully";
                     }
                     else
                     {
                         //TempData["error"] = "Operation Failed! Duplicate Entry";
-                        ModelState.AddModelError("name", "Name already taken");
+                        ModelState.AddModelError("name", "Game already exist");
                         return View(obj);
                     }
                 }
@@ -136,6 +133,9 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
 
             }
             return RedirectToAction("Index");
+
+
+          
         }
 
 
@@ -145,24 +145,27 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var commentList = _unitOfWork.Comment.GetAll(includeProperties: "ApplicationUser,Video");
-            return Json(new { data = commentList });
+            var upcommingList = _unitOfWork.Upcomming.GetAll(includeProperties: "Category");
+            return Json(new { data = upcommingList });
         }
 
-        
         //POST
         [HttpDelete]
         public IActionResult Delete(int? id)
         {
-            var obj = _unitOfWork.Comment.GetFirstOrDefault(u => u.Id == id);
+            var obj = _unitOfWork.Upcomming.GetFirstOrDefault(u => u.Id == id);
             if (obj == null)
             {
                 return Json(new { success = false, message = "Error while deleting" });
             }
 
-         
+            var oldImagePath = Path.Combine(_hostEnvironment.WebRootPath, obj.ImageUrl.TrimStart('\\'));
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
 
-            _unitOfWork.Comment.Remove(obj);
+            _unitOfWork.Upcomming.Remove(obj);
             _unitOfWork.Save();
             return Json(new { success = true, message = "Delete Successful" });
 

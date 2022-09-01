@@ -17,5 +17,6 @@ namespace BulkyBook.Models.ViewModels
         public IEnumerable<Gallery>? Gallerylist { get; set; }
 
         public IEnumerable<Gallery>? IndexGallerylist { get; set; }
+        public IEnumerable<Upcomming>? Upcomminglist { get; set; }
     }
 }

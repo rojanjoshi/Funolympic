@@ -15,13 +15,7 @@ public class ApplicationDbContext :IdentityDbContext
 
 
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Customer> Customers { get; set; }
-    public DbSet<Transaction> Transactions { get; set; }
-    public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
-    public DbSet<OrderHeader> OrderHeaders { get; set; }
-    public DbSet<OrderDetail> OrderDetails { get; set; }
     public DbSet<Video> videos { get; set; }
     public DbSet<Message> Messages { get; set; }
     public DbSet<Gallery> Galleries { get; set; }

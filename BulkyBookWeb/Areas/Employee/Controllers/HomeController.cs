@@ -31,7 +31,7 @@ public class HomeController : Controller
     }
 
 
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     public IActionResult Index()
     {
         HomeVM homeVM = new()
@@ -60,7 +60,7 @@ public class HomeController : Controller
         return View(homeVM);
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     public IActionResult Indexgallery()
     {
         HomeVM homeVM = new()
@@ -72,7 +72,7 @@ public class HomeController : Controller
         return View(homeVM);
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     public IActionResult Details(int videoId)
     {
         Comment commentObj = new()
@@ -92,7 +92,7 @@ public class HomeController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     public IActionResult Details(Comment comment)
     {
         
@@ -120,7 +120,7 @@ public class HomeController : Controller
         return RedirectToAction("Details", new { @videoId = comment.VideoId });
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     public IActionResult Edit(int commentId)
     {
         if (commentId == null || commentId == 0)
@@ -142,7 +142,7 @@ public class HomeController : Controller
     //POST
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     public IActionResult Edit(Comment commentObj)
     {
        
@@ -172,7 +172,7 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     public IActionResult Delete(int? commentId)
     {
         if (commentId == null || commentId == 0)
@@ -192,7 +192,7 @@ public class HomeController : Controller
     }
 
     //POST
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Delete(Comment commentobj)
@@ -214,7 +214,7 @@ public class HomeController : Controller
     [HttpPost]
     [ActionName("Message")]
     [ValidateAntiForgeryToken]
-    [Authorize]
+    [Authorize(Roles = "Admin,Employee,Individual")]
     public IActionResult Message(HomeVM obj)
     {
         var claimsIdentity = (ClaimsIdentity)User.Identity;

@@ -10,12 +10,7 @@ namespace BulkyBook.DataAccess.Repository.IRepository
     {
        
         IApplicationUserRepository ApplicationUser {  get; }
-        IProductRepository Product { get; }
-        ICustomerRepository Customer { get; }
-        ITransactionRepository Transaction { get; }
-        IShoppingCartRepository ShoppingCart { get; }
-        IOrderDetailRepository OrderDetail { get; }
-        IOrderHeaderRepository OrderHeader { get; }
+
 
         ICategoryRepository Category { get; }
         IVideoRepository Video { get; }

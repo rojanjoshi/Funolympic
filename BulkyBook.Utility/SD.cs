@@ -17,6 +17,6 @@ namespace BulkyBook.Utility
 
 
 
-        public const string SessionOrderHeader = "SessionOrderHeader";
+        
     }
 }

@@ -154,11 +154,11 @@
                 </h6>
                  @if (User.Identity.IsAuthenticated)
                             {
-                                <a asp-action="Details" asp-route-videoId="@item.Id"class="blinkin btn btn-lg " style="border:2px solid red;font-size:14px;border-radius:0px!important;color:red!important;text-transform:uppercase;letter-spacing:0.5px;"><i class="bi bi-record-circle" style="margin-right:5px;"></i>Live Now</a>
+                                <a asp-action="Details" asp-route-videoId="@item.Id"class="blinkin btn btn-lg " style="border:2px solid red;font-size:14px;border-radius:0px!important;color:red!important;text-transform:uppercase;letter-spacing:0.5px;"><i class="bi bi-record-circle" style="margin-right:5px;"></i>Watch Live Now</a>
                             }
                             else
                             {
-                                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-lg blinkin" style="border:2px solid red;font-size:14px;border-radius:0px!important;color:red!important;text-transform:uppercase;letter-spacing:0.5px;"><i class="bi bi-record-circle" style="margin-right:5px;"></i>Live Now</a>
+                                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-lg blinkin" style="border:2px solid red;font-size:14px;border-radius:0px!important;color:red!important;text-transform:uppercase;letter-spacing:0.5px;"><i class="bi bi-record-circle" style="margin-right:5px;"></i>Watch Live Now</a>
                             }
             </div>
          
